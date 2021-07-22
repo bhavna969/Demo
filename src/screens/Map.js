@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Image,
-} from 'react-native';
+import {SafeAreaView, View, Text, StyleSheet, Image} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import MapboxGL from '@react-native-mapbox-gl/maps';
 import axios from 'axios';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Colors from '../utils/Colors';
 
 const Icon = MaterialCommunityIcons;
 
@@ -33,7 +27,7 @@ export default class Map extends Component {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
-        console.log(this.state);
+        // console.log(this.state);
       },
       error => {
         // See error code charts below.
@@ -68,12 +62,13 @@ export default class Map extends Component {
             source={require('../assets/images/profile.png')}
           />
           <View style={styles.headerText}>
-            <Text style={{fontSize: 12, color: 'grey'}}>Good Morning</Text>
+            <Text style={{fontSize: 12, color: Colors.grey_light_5}}>
+              Good Morning
+            </Text>
             <Text style={{fontSize: 20, fontWeight: '700'}}>Ariuka</Text>
           </View>
-          <Icon name="dots-vertical" color="black" size={40} />
+          <Icon name="dots-vertical" color={Colors.black} size={40} />
         </View>
-
         <View style={styles.container}>
           {/* <Text>{this.state.currentLocation}</Text> */}
           {/* <Button title="get my location" onPress={() => this.getLocation()} /> */}
@@ -97,7 +92,7 @@ export default class Map extends Component {
         <View style={[styles.box]}>
           <Image
             style={styles.image}
-            source={require('../assets/images/count.png')}
+            source={require('../assets/images/steps.png')}
           />
           <View style={{borderWidth: 1, margin: 50}} />
           <View style={[styles.boxText]}>
@@ -110,8 +105,11 @@ export default class Map extends Component {
             </View>
           </View>
           <View style={styles.icon}>
-            <Icon name="pause-circle" color="red" size={90} />
+            <Icon name="pause-circle" color={Colors.red} size={90} />
           </View>
+        </View>
+        <View style={styles.arrow}>
+          <Icon name="arrow-collapse" color={Colors.black} size={30} />
         </View>
       </SafeAreaView>
     );
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderBottomLeftRadius: 70,
     position: 'absolute',
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
     marginTop: '16%',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -187,13 +185,24 @@ const styles = StyleSheet.create({
     backfaceVisibility: 'visible',
     marginTop: 150,
     marginLeft: 280,
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
+  },
+  arrow: {
+    height: 70,
+    width: 70,
+    // borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+    marginTop: 570,
+    backgroundColor: Colors.white,
   },
   image: {
     height: 120,
     width: 120,
-    borderWidth: 2,
-    borderColor: 'red',
+    // borderWidth: 2,
     borderRadius: 100,
     margin: 20,
     marginTop: 50,

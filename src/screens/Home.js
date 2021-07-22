@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, View, Text, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Colors from '../utils/Colors';
 
 const Icon = MaterialCommunityIcons;
 
@@ -9,12 +10,12 @@ class Home extends Component {
     return (
       <SafeAreaView style={[styles.main]}>
         <View style={[styles.left]}>
-          <Icon name="view-headline" color="white" size={50} />
-          <Icon name="home-circle" color="white" size={50} />
-          <Icon name="cellphone" color="white" size={50} />
-          <Icon name="bell-circle-outline" color="white" size={50} />
-          <Icon name="cog-box" color="white" size={50} />
-          <Icon name="power" color="white" size={50} />
+          <Icon name="view-headline" color={Colors.white} size={50} />
+          <Icon name="home-circle" color={Colors.white} size={50} />
+          <Icon name="cellphone" color={Colors.white} size={50} />
+          <Icon name="bell-circle-outline" color={Colors.white} size={50} />
+          <Icon name="cog-box" color={Colors.white} size={50} />
+          <Icon name="power" color={Colors.white} size={50} />
           <View style={{height: 110}} />
         </View>
         <View style={[styles.right]}>
@@ -23,7 +24,7 @@ class Home extends Component {
           </View>
           <View style={[styles.container]}>
             <Text style={[styles.welcomeText]}>Welcome</Text>
-            <Text style={{color: 'white'}}>
+            <Text style={{color: Colors.white}}>
               loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem
             </Text>
           </View>
@@ -34,12 +35,16 @@ class Home extends Component {
             <Text style={[styles.inputText]}>Password</Text>
           </View>
           <View style={[styles.bottom]}>
-            <Icon name="checkbox-blank-outline" color="white" size={20} />
+            <Icon
+              name="checkbox-blank-outline"
+              color={Colors.white}
+              size={20}
+            />
             <Text style={[styles.bottomText]}>hhxgdyuvewexutzgvnxjgbwed</Text>
           </View>
         </View>
         <View style={[styles.home]}>
-          <Icon name="home-circle" color="white" size={80} />
+          <Icon name="home-circle" color={Colors.white} size={80} />
         </View>
         <View style={[styles.button]}>
           <Text style={[styles.headerText]}>SignIn</Text>
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     paddingTop: 15,
     // borderTopLeftRadius: 20,
-    backgroundColor: 'skyblue',
+    backgroundColor: Colors.blue_light_5,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
     width: '80%',
     // borderWidth: 2,
     // borderTopRightRadius: 20,
-    backgroundColor: 'slategray',
+    backgroundColor: Colors.grey_light_10,
     paddingLeft: 20,
   },
   container: {
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   welcomeText: {
-    color: 'darkturquoise',
+    color: Colors.blue_light_10,
     fontSize: 30,
     paddingBottom: 10,
   },
@@ -91,7 +96,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   headerText: {
-    color: 'white',
+    color: Colors.white,
     fontSize: 20,
     fontWeight: '700',
   },
@@ -103,10 +108,10 @@ const styles = StyleSheet.create({
   },
   inputText: {
     fontSize: 16,
-    color: 'white',
+    color: Colors.white,
     marginVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: 'aliceblue',
+    borderBottomColor: Colors.blue_light_0,
     paddingBottom: 30,
   },
   bottom: {
@@ -119,18 +124,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bottomText: {
-    color: 'white',
+    color: Colors.white,
     fontSize: 16,
     paddingRight: 40,
   },
   home: {
-    backgroundColor: 'skyblue',
+    backgroundColor: Colors.blue_light_5,
     height: 100,
     width: 110,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
-    marginTop: 60,
+    marginTop: 75,
     borderTopRightRadius: 50,
     borderBottomRightRadius: 50,
     position: 'absolute',
@@ -138,7 +143,7 @@ const styles = StyleSheet.create({
   },
   button: {
     // borderWidth: 1,
-    backgroundColor: 'aqua',
+    backgroundColor: Colors.blue_light_3,
     height: 50,
     width: 300,
     justifyContent: 'center',

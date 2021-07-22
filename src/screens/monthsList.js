@@ -10,10 +10,11 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DATA} from '../utils/Months';
 import Dates from './datesList';
+import * as Colors from '../utils/Colors';
 
 const Icon = MaterialCommunityIcons;
 
-class Months extends Component {
+export default class Months extends Component {
   state = {
     Left: DATA[2].title,
     Middle: DATA[3].title,
@@ -48,7 +49,7 @@ class Months extends Component {
             <TouchableOpacity
               style={[styles.item]}
               onPress={() => this.shiftLeft()}>
-              <Icon name="arrow-left" color="darkblue" size={20} />
+              <Icon name="arrow-left" color={Colors.primary_dark} size={20} />
               <Text>{this.state.Left}</Text>
             </TouchableOpacity>
           ) : (
@@ -61,7 +62,7 @@ class Months extends Component {
               style={[styles.item]}
               onPress={() => this.shiftRight()}>
               <Text>{this.state.Right}</Text>
-              <Icon name="arrow-right" color="darkblue" size={20} />
+              <Icon name="arrow-right" color={Colors.primary_dark} size={20} />
             </TouchableOpacity>
           ) : (
             <Text>{this.state.index}</Text>
@@ -72,8 +73,6 @@ class Months extends Component {
     );
   }
 }
-
-export default Months;
 
 const styles = StyleSheet.create({
   main: {

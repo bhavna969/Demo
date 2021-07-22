@@ -2,36 +2,64 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import {DATA} from '../utils/Months';
 import Today from './dayList';
+import * as Colors from '../utils/Colors';
 
-const Item = ({date, day, onPress}) => (
-  <TouchableOpacity style={styles.item} onPress={onPress}>
-    <Text style={styles.title}>{date}</Text>
+const Item = ({date, day, onPress, backgroundcolor}) => (
+  <TouchableOpacity
+    style={[styles.item, {backgroundColor: backgroundcolor}]}
+    onPress={onPress}
+    activeOpacity={0.1}>
+    <Text style={[styles.title]}>{date}</Text>
     <Text style={[styles.title, {fontSize: 16}]}>{day}</Text>
   </TouchableOpacity>
 );
 export default class Dates extends Component {
   state = {
     data: [],
+    selectedId: null,
   };
 
   showList = date => {
     const indx = date === '1' ? 0 : 1;
-    this.setState({data: DATA[3].days[indx].data});
+    this.setState({
+      data: DATA[3].days[indx].data,
+    });
     // console.log('data=>', this.state.data);
+  };
+  hideList = () => {
+    this.setState({
+      data: [],
+    });
+    alert('data not available');
+    // console.log('data=>', this.state.data);
+  };
+  changeId = val => {
+    this.setState({selectedId: val});
   };
   render() {
     const {index} = this.props;
     // console.log(data);
     const renderItem = ({item}) => {
-      // console.log(item.date);
-      const fun = () => {
-        {
-          index === 3 && (item.date[0] === '1' || item.date[0] === '2')
-            ? this.showList(item.date[0])
-            : alert('data not available');
-        }
+      const setData = () => {
+        index === 3 && (item.date[0] === '1' || item.date[0] === '2')
+          ? this.showList(item.date[0])
+          : this.hideList();
       };
-      return <Item date={item.date} day={item.day} onPress={() => fun()} />;
+      const color =
+        this.state.selectedId === item.id ? Colors.primary_light : Colors.white;
+      const fun = () => {
+        setData();
+        this.changeId(item.id);
+      };
+      console.log(item.id);
+      return (
+        <Item
+          date={item.date}
+          day={item.day}
+          onPress={() => fun()}
+          backgroundcolor={color}
+        />
+      );
     };
     return (
       <View style={[styles.main]}>
@@ -41,6 +69,7 @@ export default class Dates extends Component {
             initialNumToRender={5} //important
             data={DATA[index].days}
             renderItem={renderItem}
+            extraData={this.state.selectedId}
           />
           <Text style={[styles.text]}>Ongoing</Text>
         </View>
@@ -60,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   item: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
     // borderWidth: 10,
     padding: 20,
     marginHorizontal: 16,
@@ -77,7 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 10,
     paddingLeft: 20,
-    color: 'darkblue',
+    color: Colors.primary_dark,
     marginTop: 20,
   },
 });

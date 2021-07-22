@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image, ScrollView} from 'react-native';
+import * as Colors from '../../utils/Colors';
 
 export default class Time extends Component {
   render() {
-    const {heading, peeps, time, image} = this.props;
+    const {heading, peeps, time, image, width} = this.props;
     return (
-      <View style={[styles.middle]}>
+      <View style={[styles.middle, {width: this.props.width || '70%'}]}>
         <Text style={[styles.textTop]}>{this.props.heading}</Text>
         <Text style={[styles.textBottom]}>{this.props.peeps}</Text>
         <View style={[styles.middleBottom]}>
@@ -29,22 +30,22 @@ export default class Time extends Component {
 const styles = StyleSheet.create({
   middle: {
     // borderWidth: 1,
-    width: '70%',
+    width: '75%',
     borderRadius: 25,
     paddingLeft: 10,
     paddingRight: 10,
-    backgroundColor: 'slateblue',
+    backgroundColor: Colors.primary_light,
     // marginLeft: 10,
     // marginVertical: 10,
   },
   textTop: {
-    color: 'white',
+    color: Colors.white,
     fontSize: 17,
     fontWeight: 'bold',
     margin: 5,
   },
   textBottom: {
-    color: 'white',
+    color: Colors.white,
     margin: 5,
   },
   middleBottom: {
@@ -59,14 +60,14 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     paddingLeft: 20,
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: Colors.white,
   },
   imageTwo: {
     height: 35,
     width: 35,
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: Colors.white,
     position: 'absolute',
     marginLeft: 30,
   },

@@ -1,17 +1,9 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  SafeAreaView,
-  FlatList,
-  TouchableHighlight,
-  StatusBar,
-} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Months from './monthsList';
+import * as Colors from '../utils/Colors';
 
 const Icon = MaterialCommunityIcons;
 
@@ -21,7 +13,7 @@ export default class ScreenThree extends Component {
       <View style={[styles.main]}>
         <View style={[styles.header]}>
           <View style={styles.arrow}>
-            <Icon name="arrow-left" color="darkblue" size={30} />
+            <Icon name="arrow-left" color={Colors.blue_dark_10} size={30} />
           </View>
           <Image
             style={styles.profile}
@@ -39,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // borderWidth: 2,
     paddingTop: 10,
-    backgroundColor: 'lightblue',
+    backgroundColor: Colors.blue_light_1,
     justifyContent: 'flex-start',
     // alignItems: 'center',
   },
@@ -59,7 +51,7 @@ const styles = StyleSheet.create({
     width: 45,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'darkblue',
+    borderColor: Colors.blue_dark_10,
     alignSelf: 'center',
     paddingLeft: 8,
     paddingTop: 2,
@@ -70,7 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginTop: 20,
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: Colors.white,
     alignSelf: 'flex-start',
   },
 });

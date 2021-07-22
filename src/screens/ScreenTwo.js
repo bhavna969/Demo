@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Time from '../Components/ScreenThree/TimeTab';
 
 const Icon = MaterialCommunityIcons;
 
@@ -17,17 +18,12 @@ export default class ScreenTwo extends Component {
         </View>
         <Text style={[styles.headerTop]}>Hi Ghulam</Text>
         <Text style={[styles.headerBottom]}>6 Tasks are pending</Text>
-        <View style={[styles.middle]}>
-          <Text style={[styles.textTop]}>Mobile App Design</Text>
-          <Text style={[styles.textBottom]}>Mike and Anita</Text>
-          <View style={[styles.middleBottom]}>
-            <Image
-              style={[styles.image]}
-              source={require('../assets/images/profile.png')}
-            />
-            <Text style={{color: 'white'}}>Now</Text>
-          </View>
-        </View>
+        <Time
+          heading="Mobile App Design"
+          peeps="Mike and Anita"
+          time="Now"
+          width="86%"
+        />
         <View style={[styles.calendarBox]}>
           <Text style={[styles.textTop]}>Monthly Review</Text>
           <View style={styles.calender}>
@@ -124,35 +120,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingLeft: 15,
   },
-  middle: {
-    // borderWidth: 1,
-    width: '90%',
-    borderRadius: 25,
-    paddingLeft: 10,
-    paddingRight: 10,
-    backgroundColor: 'slateblue',
-  },
   textTop: {
     color: 'white',
     fontSize: 17,
     fontWeight: 'bold',
     margin: 5,
-  },
-  textBottom: {
-    color: 'white',
-    margin: 5,
-  },
-  middleBottom: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: 5,
-  },
-  image: {
-    height: 35,
-    width: 35,
-    borderRadius: 50,
-    paddingLeft: 20,
   },
   calendarBox: {
     flexDirection: 'row',
@@ -167,7 +139,7 @@ const styles = StyleSheet.create({
   calender: {
     height: 40,
     width: 40,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 30,
     backgroundColor: 'skyblue',
     alignItems: 'center',

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Colors from '../utils/Colors';
 
 const Icon = MaterialCommunityIcons;
 
@@ -19,7 +20,7 @@ export default class ScreenOne extends Component {
           Team and Project management with solution providing App
         </Text>
         <View style={[styles.icon]}>
-          <Icon name="circle" color="white" size={70} />
+          <Icon name="circle" color={Colors.white} size={70} />
           <Text style={[styles.textBottom]}>Get Started</Text>
         </View>
       </View>
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // borderWidth: 2,
     padding: 20,
-    backgroundColor: 'lightblue',
+    backgroundColor: Colors.blue_light_1,
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 80,
   },
   text: {
-    color: 'midnightblue',
+    color: Colors.blue_dark_10,
     alignSelf: 'flex-start',
     paddingLeft: 20,
   },
@@ -53,8 +54,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   textMiddle: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 17,
+    fontWeight: '700',
+    paddingRight: 10,
   },
   icon: {
     width: '80%',
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textBottom: {
-    color: 'midnightblue',
+    color: Colors.blue_dark_10,
     fontSize: 20,
     fontWeight: 'bold',
     position: 'absolute',

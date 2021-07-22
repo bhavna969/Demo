@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image, ScrollView} from 'react-native';
 import Time from '../Components/ScreenThree/TimeTab';
-
-// import {data} from './dateList';
+import * as Colors from '../utils/Colors';
 
 export default class Today extends Component {
   render() {
     const {data} = this.props;
-
-    // console.log(data);
     return (
       <ScrollView style={[styles.main]} endFillColor={'red'}>
         <View style={[styles.container]}>
@@ -22,6 +19,7 @@ export default class Today extends Component {
               peeps={this.props.data[0].peeps}
               time={this.props.data[0].time}
               image={this.props.data[0].image}
+              width="70%"
             />
           ) : (
             <Time />
@@ -44,6 +42,7 @@ export default class Today extends Component {
               peeps={this.props.data[1].peeps}
               time={this.props.data[1].time}
               image={this.props.data[1].image}
+              width="70%"
             />
           ) : (
             <Time />
@@ -60,6 +59,7 @@ export default class Today extends Component {
               peeps={this.props.data[2].peeps}
               time={this.props.data[2].time}
               image={this.props.data[2].image}
+              width="70%"
             />
           ) : (
             <Time />
