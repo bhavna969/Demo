@@ -4,13 +4,15 @@ import {DATA} from '../utils/Months';
 import Today from './dayList';
 import * as Colors from '../utils/Colors';
 
-const Item = ({date, day, onPress, backgroundcolor}) => (
+const Item = ({date, day, onPress, backgroundcolor, color}) => (
   <TouchableOpacity
     style={[styles.item, {backgroundColor: backgroundcolor}]}
     onPress={onPress}
     activeOpacity={0.1}>
-    <Text style={[styles.title]}>{date}</Text>
-    <Text style={[styles.title, {fontSize: 16}]}>{day}</Text>
+    <Text style={[styles.title, {fontWeight: '700', color: color}]}>
+      {date}
+    </Text>
+    <Text style={[styles.title, {fontSize: 15, color: color}]}>{day}</Text>
   </TouchableOpacity>
 );
 export default class Dates extends Component {
@@ -45,19 +47,21 @@ export default class Dates extends Component {
           ? this.showList(item.date[0])
           : this.hideList();
       };
-      const color =
+      const backgroundColor =
         this.state.selectedId === item.id ? Colors.primary_light : Colors.white;
-      const fun = () => {
-        setData();
-        this.changeId(item.id);
-      };
-      console.log(item.id);
+      const color =
+        this.state.selectedId === item.id ? Colors.white : Colors.primary_dark;
+      // console.log(item.id);
       return (
         <Item
           date={item.date}
           day={item.day}
-          onPress={() => fun()}
-          backgroundcolor={color}
+          onPress={() => {
+            setData();
+            this.changeId(item.id);
+          }}
+          backgroundcolor={backgroundColor}
+          color={color}
         />
       );
     };
@@ -84,21 +88,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   datesContainer: {
-    height: 180,
+    height: 190,
     width: '100%',
     justifyContent: 'space-between',
   },
   item: {
     backgroundColor: Colors.white,
-    // borderWidth: 10,
+    // borderWidth: 1,
+    width: 80,
     padding: 20,
-    marginHorizontal: 16,
+    marginHorizontal: 14,
     borderRadius: 50,
   },
   title: {
-    fontSize: 25,
+    fontSize: 28,
+    color: Colors.primary_dark,
     textAlign: 'center',
     // borderWidth: 1,
+    marginVertical: 3,
   },
   text: {
     // borderWidth: 1,

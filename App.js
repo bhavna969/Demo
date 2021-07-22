@@ -6,9 +6,9 @@ import TabNav from './src/Components/Navigation/TabNavigation';
 export default class App extends Component {
   render() {
     return (
-      // <TabNav />
+      <TabNav />
       // <Home />
-      <Map />
+      // <Map />
     );
   }
 }

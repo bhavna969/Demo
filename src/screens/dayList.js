@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image, ScrollView} from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import Time from '../Components/ScreenThree/TimeTab';
 import * as Colors from '../utils/Colors';
+
+const Icon = MaterialCommunityIcons;
 
 export default class Today extends Component {
   render() {
@@ -27,7 +31,10 @@ export default class Today extends Component {
         </View>
         <View style={[styles.container]}>
           <View style={[styles.timeBox]}>
-            <Text style={[styles.time]}>10 AM</Text>
+            <Text style={[styles.time, {alignSelf: 'center'}]}>10 AM</Text>
+          </View>
+          <View style={[styles.recordIcon]}>
+            <Icon name="circle" color={Colors.red} size={12} />
           </View>
           <View style={{borderWidth: 1, width: '70%', borderColor: 'red'}} />
         </View>
@@ -95,5 +102,13 @@ const styles = StyleSheet.create({
     color: 'navy',
     // borderWidth: 1,
     marginVertical: 20,
+  },
+  recordIcon: {
+    backgroundColor: Colors.white,
+    borderRadius: 20,
+    width: 18,
+    height: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

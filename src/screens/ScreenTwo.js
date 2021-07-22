@@ -3,6 +3,8 @@ import {Text, View, Image, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Time from '../Components/ScreenThree/TimeTab';
 
+import * as Colors from '../utils/Colors';
+
 const Icon = MaterialCommunityIcons;
 
 export default class ScreenTwo extends Component {
@@ -27,7 +29,7 @@ export default class ScreenTwo extends Component {
         <View style={[styles.calendarBox]}>
           <Text style={[styles.textTop]}>Monthly Review</Text>
           <View style={styles.calender}>
-            <Icon name="calendar-range-outline" color="white" size={25} />
+            <Icon name="calendar-range-outline" color="white" size={22} />
           </View>
         </View>
 
@@ -35,14 +37,14 @@ export default class ScreenTwo extends Component {
           <View style={[styles.boxContainer]}>
             <View style={[styles.leftTop, styles.boxCommon]}>
               <Text
-                style={[styles.textBox, {fontSize: 20, fontWeight: 'bold'}]}>
-                20
+                style={[styles.textBox, {fontSize: 25, fontWeight: 'bold'}]}>
+                22
               </Text>
               <Text style={[styles.textBox]}>Done</Text>
             </View>
             <View style={[styles.leftBottom, styles.boxCommon]}>
               <Text
-                style={[styles.textBox, {fontSize: 20, fontWeight: 'bold'}]}>
+                style={[styles.textBox, {fontSize: 23, fontWeight: 'bold'}]}>
                 10
               </Text>
               <Text style={[styles.textBox]}>Ongoing</Text>
@@ -51,14 +53,14 @@ export default class ScreenTwo extends Component {
           <View style={[styles.boxContainer]}>
             <View style={[styles.rightTop, styles.boxCommon]}>
               <Text
-                style={[styles.textBox, {fontSize: 20, fontWeight: 'bold'}]}>
+                style={[styles.textBox, {fontSize: 25, fontWeight: 'bold'}]}>
                 7
               </Text>
               <Text style={[styles.textBox]}>In Progress</Text>
             </View>
             <View style={[styles.rightBottom, styles.boxCommon]}>
               <Text
-                style={[styles.textBox, {fontSize: 20, fontWeight: 'bold'}]}>
+                style={[styles.textBox, {fontSize: 25, fontWeight: 'bold'}]}>
                 12
               </Text>
               <Text style={[styles.textBox]}>waiting for Review</Text>
@@ -84,13 +86,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   top: {
-    height: '15%',
+    height: '10%',
     // borderWidth: 1,
     alignSelf: 'flex-start',
     justifyContent: 'center',
     alignContent: 'center',
-    margin: 10,
-    marginLeft: 20,
+    marginBottom: 30,
+    margin: 20,
   },
   profile: {
     height: 40,
@@ -106,25 +108,19 @@ const styles = StyleSheet.create({
   headerTop: {
     // borderWidth: 1,
     width: '90%',
-    fontSize: 20,
+    fontSize: 25,
     color: 'white',
     fontWeight: 'bold',
     marginBottom: 10,
-    paddingLeft: 15,
+    paddingLeft: 20,
   },
   headerBottom: {
     // borderWidth: 1,
     width: '90%',
     fontSize: 15,
     color: 'white',
-    marginBottom: 10,
-    paddingLeft: 15,
-  },
-  textTop: {
-    color: 'white',
-    fontSize: 17,
-    fontWeight: 'bold',
-    margin: 5,
+    marginBottom: 25,
+    paddingLeft: 20,
   },
   calendarBox: {
     flexDirection: 'row',
@@ -132,13 +128,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // borderWidth: 1,
     width: '90%',
-    paddingLeft: 5,
-    paddingRight: 30,
-    paddingTop: 10,
+    paddingLeft: 20,
+    paddingRight: 15,
+    marginTop: 20,
+    margin: 15,
+  },
+  textTop: {
+    color: 'white',
+    fontSize: 17,
+    fontWeight: 'bold',
+    margin: 5,
   },
   calender: {
-    height: 40,
-    width: 40,
+    height: 35,
+    width: 35,
     // borderWidth: 1,
     borderRadius: 30,
     backgroundColor: 'skyblue',
@@ -147,41 +150,38 @@ const styles = StyleSheet.create({
   },
   box: {
     // borderWidth: 1,
-    width: '90%',
+    width: '88%',
     height: '40%',
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
   },
   boxContainer: {
     // borderWidth: 1,
     width: '50%',
     alignItems: 'center',
-    marginHorizontal: 10,
   },
   textBox: {
     color: 'white',
-    fontSize: 15,
     textAlign: 'center',
+    marginVertical: 4,
   },
   boxCommon: {
     width: '90%',
     // borderWidth: 1,
     marginVertical: 10,
     alignItems: 'center',
-    justifyContent: 'space-evenly',
-    backgroundColor: 'slateblue',
+    justifyContent: 'center',
+    backgroundColor: Colors.primary_light,
   },
   leftTop: {
     height: '50%',
     borderRadius: 30,
   },
   leftBottom: {
-    height: '30%',
+    height: '33%',
     borderRadius: 20,
   },
   rightTop: {
-    height: '30%',
+    height: '33%',
     borderRadius: 20,
   },
   rightBottom: {
