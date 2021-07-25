@@ -1,55 +1,59 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Button,
-} from 'react-native';
+import {SafeAreaView, View, Text, StyleSheet, Image} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import MapboxGL from '@react-native-mapbox-gl/maps';
+import axios from 'axios';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import {showLocation} from '../store/actions/mapAction';
-import {ACCESS_TOKEN} from '../store/sagas/mapSaga';
-import {connect} from 'react-redux';
-
 import * as Colors from '../utils/Colors';
 
 const Icon = MaterialCommunityIcons;
 
+const ACCESS_TOKEN =
+  'pk.eyJ1IjoiYmhhdm5hY2hhdWRoYXJ5IiwiYSI6ImNrcmE2ZHZxajRma2wyb3FwZ3FtYjE4ZjIifQ.al77WftXFPgUPbZGAs-UqQ';
 MapboxGL.setAccessToken(ACCESS_TOKEN);
 
-class Map extends Component {
+export default class Map extends Component {
   state = {
     latitude: 0,
     longitude: 0,
-    // currentLocation: 'none',
-    // coordinates: [],
+    currentLocation: 'none',
+    coordinates: [],
   };
   componentDidMount() {
     Geolocation.getCurrentPosition(
       position => {
-        // console.log(position.coords);
+        console.log(position);
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
-        // console.log('==>', this.state);
-        this.props.showLocation(this.state);
+        // console.log(this.state);
       },
       error => {
         // See error code charts below.
         console.log(error.code, error.message);
       },
       {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-      // console.log('====>', this.state),
+      //   this.coordsToLocation(),
     );
+    axios
+      .get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.longitude},${this.latitude}.json?access_token=${ACCESS_TOKEN}`,
+      )
+      .then(response => {
+        console.log('response => ', response.data.features[0].place_name);
+        this.setState({
+          currentLocation: response.data.features[0].place_name,
+          coordinates: response.data.features[0].geometry.coordinates,
+        });
+        console.log(this.state);
+      })
+      .catch(error => {
+        console.log('error => ', error);
+      });
   }
 
   render() {
-    const {location} = this.props;
     return (
       <SafeAreaView style={styles.page}>
         <View style={styles.header}>
@@ -66,6 +70,8 @@ class Map extends Component {
           <Icon name="dots-vertical" color={Colors.black} size={40} />
         </View>
         <View style={styles.container}>
+          {/* <Text>{this.state.currentLocation}</Text> */}
+          {/* <Button title="get my location" onPress={() => this.getLocation()} /> */}
           <MapboxGL.MapView
             style={styles.map}
             onUpdate={this.onUserLocationUpdate}>
@@ -105,22 +111,10 @@ class Map extends Component {
         <View style={styles.arrow}>
           <Icon name="arrow-collapse" color={Colors.black} size={30} />
         </View>
-        {/* <Text style={[styles.text]}>{location}</Text> */}
-        {/* <Button
-          title="get my location"
-          onPress={() => showLocation(this.state)}
-        /> */}
       </SafeAreaView>
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    location: state.mapReducer.location,
-  };
-};
-export default connect(mapStateToProps, {showLocation})(Map);
 
 const styles = StyleSheet.create({
   page: {
@@ -168,7 +162,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 15,
     paddingLeft: 20,
-    borderWidth: 1,
   },
   container: {
     height: '70%',
